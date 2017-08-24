@@ -1,0 +1,65 @@
+﻿@model AppointmentCalendar.Models.CalendarMonths
+
+
+@{
+    ViewBag.Title = "Calendar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Calendar</h2>
+
+<br/>
+
+<h4>Choose Your Month</h4>
+
+<br/>
+
+<div class="col-md-12">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <ul class="nav navbar-nav">
+                @{
+                    foreach (var month in Model.Months)
+                    {
+                        <li><a class="selector" href="#" data-target-url="@Url.Action("GetAppointmentsForMonth", "Appointments", new {month = month.Key})">@month.Value</a></li>
+                    }
+                }
+
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<hr/>
+
+<div class="col-md-6" id="Appointments" style="border-right: 1px solid lightgray">
+</div>
+
+<div class="col-md-6" id="Details">
+<h4>Details</h4>
+</div>
+<div></div>
+
+
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+            $('.selector').on('click', function () {
+                $.get($(this).data('targetUrl'), function (data) {
+                    $('#Appointments').html(data);
+                });
+            });
+
+
+            $('.nav.navbar-nav > li').on('click', function () {
+                $(this).addClass('active');
+                $(this).siblings().removeClass('active');
+            });
+
+            $("ul li:first-child a").click();
+
+        });
+
+
+</script>

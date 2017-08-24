@@ -1,0 +1,42 @@
+﻿@model IEnumerable<AppointmentCalendar.Models.Appoinment>
+
+<h4>Appointments</h4>
+
+
+@{
+    if (Model.Any())
+    {
+        <div class="list-group" id="appointmentList">
+            @foreach (var appointment in Model)
+            {
+                <a href="#" class="list-group-item">@appointment.AppointmentTime <span class="pull-right">@appointment.AppointmentName</span></a>
+            }
+
+        </div>
+    }
+    else
+    {
+        <div id="NoAppointmentNotification" class="alert alert-info">No appointments for current Month</div>
+    }
+}
+
+
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $('.list-group-item').on("click", function () {
+            $(this).addClass('active');
+            $(this).siblings().removeClass('active');
+        });
+
+
+    });
+
+
+</script>
+
+
+
+
+
