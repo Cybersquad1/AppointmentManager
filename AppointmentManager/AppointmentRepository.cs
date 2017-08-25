@@ -25,7 +25,7 @@ namespace AppointmentManager
         }
 
         /// <summary>
-        /// 
+        /// Default filter on year - can be overriden
         /// </summary>
         /// <param name="selector"></param>
         /// <returns></returns>
@@ -37,7 +37,7 @@ namespace AppointmentManager
 
 
         /// <summary>
-        /// 
+        /// Filter by Id
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -48,7 +48,7 @@ namespace AppointmentManager
 
 
         /// <summary>
-        /// 
+        /// get Appoitnment Details by appointment Id
         /// </summary>
         /// <param name="appointmentId"></param>
         /// <returns></returns>
@@ -115,7 +115,7 @@ namespace AppointmentManager
         }
 
         /// <summary>
-        /// 
+        /// Overriden filter for month filtering 
         /// </summary>
         /// <param name="month"></param>
         /// <returns></returns>

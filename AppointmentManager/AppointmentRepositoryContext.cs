@@ -14,6 +14,11 @@ namespace AppointmentManager
             Context = context;
         }
 
+        /// <summary>
+        /// Returns Repository implementation based on selector 
+        /// </summary>
+        /// <param name="selector"></param>
+        /// <returns></returns>
         public IAppointmentRepository GetAppointmentRepository(AppointmentSelector selector = default(AppointmentSelector))
         {
             switch (selector)

@@ -10,7 +10,9 @@ namespace AppointmentManager.Models
             Attendees = new List<string>();
         }
         
+        /*Reference to parent appointment*/
         public Appointment Appointment { get; set; }
+
         public string Organiser { get; set; }
         public List<string> Attendees { get; set; }
     }
