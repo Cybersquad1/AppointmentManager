@@ -11,14 +11,18 @@ namespace AppointmentCalendar.Controllers
     public class AppointmentsController : Controller
     {
         private readonly IAppointmentProviderContext _appointmentProviderStrategy;
+        private readonly IAppointmentProvider _provider;
 
         public AppointmentsController(IAppointmentProviderContext appointmentProviderStrategy)
         {
             _appointmentProviderStrategy = appointmentProviderStrategy;
+            _provider = _appointmentProviderStrategy.GetAppointmentProvider();
         }
 
         public ActionResult Index()
         {
+            ViewBag.Message = "Welcome to a Simple appointment Calendar.";
+
             return View();
         }
 
@@ -35,32 +39,34 @@ namespace AppointmentCalendar.Controllers
             return View(months);
         }
 
-        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="month"></param>
+        /// <returns></returns>
         public PartialViewResult GetAppointmentsForMonth(int month)
         {
-            var provider = _appointmentProviderStrategy.GetAppointmentProvider(AppointmentSelector.Monthly);
-            var response = provider.GetAppointments(month).ToList();
-            List<Appoinment> appointments = new List<Appoinment>();
-            foreach (var appointment in response)
-            {
-                appointments.Add(new Appoinment
+            var monthlyProvider = _appointmentProviderStrategy.GetAppointmentProvider(AppointmentSelector.Monthly);
+            var response = monthlyProvider.GetAppointments(month).ToList();
+            var appointments = response.Select(
+                appointment => new Appoinment
                 {
-                    Id = appointment.Id,
-                    AppointmentName = appointment.AppointmentName,
-                    AppointmentTime = appointment.AppointmentTime,
-                });
-            }
-                
+                    Id = appointment.Id, AppointmentName = appointment.AppointmentName, AppointmentTime = appointment.AppointmentTime
+                }).ToList();
+
             return PartialView("Appointments", appointments);
         }
 
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public PartialViewResult GetAppointmentDetail(Guid id)
         {
-            var provider = _appointmentProviderStrategy.GetAppointmentProvider();
-            var appointment = provider.GetAppointmentDetails(id);
-            AppointmentDetail detail = new AppointmentDetail
+            var appointment = _provider.GetAppointmentDetails(id);
+            var detail = new AppointmentDetail
             {
                 Organiser = appointment.Organiser,
                 Attendees = appointment.Attendees

@@ -65,6 +65,56 @@ namespace AppointmentManager.Data
             AppointmentDetails.Add(appointmentDetail3);
 
 
+            var appointment4 = new Appointment
+            {
+                AppointmentName = "Scrum Meeting",
+                AppointmentTime = new DateTime(2014, 05, 19),
+            };
+
+            var appointmentDetail4 = new AppointmentDetail
+            {
+                AppointmentId = appointment4.Id,
+                Organiser = "Tim Cook",
+                Attendees = new List<string> { "Jane Goodall", "Stephen Hawking", "Lord Kelvin" }
+            };
+
+            Appointments.Add(appointment4);
+            AppointmentDetails.Add(appointmentDetail4);
+
+
+            var appointment5 = new Appointment
+            {
+                AppointmentName = "Scrum Meeting",
+                AppointmentTime = new DateTime(2014, 08, 19),
+            };
+
+            var appointmentDetail5 = new AppointmentDetail
+            {
+                AppointmentId = appointment5.Id,
+                Organiser = "Jim Cook",
+                Attendees = new List<string> { "Jane Goodall", "Stephen Hawking", "Lord Kelvin" }
+            };
+
+            Appointments.Add(appointment5);
+            AppointmentDetails.Add(appointmentDetail5);
+
+            var appointment6 = new Appointment
+            {
+                AppointmentName = "Retrospective Meeting",
+                AppointmentTime = new DateTime(2014, 08, 19),
+            };
+
+            var appointmentDetail6 = new AppointmentDetail
+            {
+                AppointmentId = appointment6.Id,
+                Organiser = "Tim Lee",
+                Attendees = new List<string> { "Jane Goodall", "Stephen Hawking", "Lord Kelvin" }
+            };
+
+            Appointments.Add(appointment6);
+            AppointmentDetails.Add(appointmentDetail6);
+
+
         }
         
     }

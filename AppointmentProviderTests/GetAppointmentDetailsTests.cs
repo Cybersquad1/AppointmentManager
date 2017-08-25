@@ -60,5 +60,37 @@ namespace AppointmentProviderTests
         }
 
 
+        [TestMethod]
+        [ExpectedException(typeof(InvalidOperationException))]
+        public void DuplicateAppointmentDetailForSameAppointmentThrowsException()
+        {
+            var appointmentWithDetail = new Appointment
+            {
+                AppointmentTime = DateTime.Now,
+                AppointmentName = "AppointmentWithDetail"
+            };
+            var appointmentDetail = new AppointmentDetail
+            {
+                AppointmentId = appointmentWithDetail.Id,
+                Organiser = "organiser",
+                Attendees = new List<string> { "attendee1", "attendee2" }
+            };
+
+            var appointmentDetail2 = new AppointmentDetail
+            {
+                AppointmentId = appointmentWithDetail.Id,
+                Organiser = "organiser2",
+                Attendees = new List<string> {"attendee3", "attendee4"}
+            };
+
+            var provider = _appointmentProviderStrategy.GetAppointmentProvider();
+            _testContext.Appointments.Add(appointmentWithDetail);
+            _testContext.AppointmentDetails.Add(appointmentDetail);
+            _testContext.AppointmentDetails.Add(appointmentDetail2);
+            provider.GetAppointmentDetails(appointmentDetail.AppointmentId);
+
+        }
+
+
     }
 }

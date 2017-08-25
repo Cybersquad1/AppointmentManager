@@ -11,10 +11,9 @@ namespace AppointmentCalendar.Models
         public string AppointmentName { get; set; }
         public DateTime AppointmentTime { get; set; }
     }
-
-    public class AppointmentDetail
+     
+    public class AppointmentDetail 
     {
-        public Guid AppointmentId { get; set; }
         public string Organiser { get; set; }
         public List<string> Attendees { get; set; }
     }
