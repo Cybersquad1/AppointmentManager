@@ -18,7 +18,7 @@ namespace AppointmentManager.Data
             var appointment1 = new Appointment
             {
                 AppointmentName = "Team Meeting",
-                AppointmentTime = new DateTime(2014, 02, 08),
+                AppointmentTime = new DateTime(2014, 02, 08 ,11,3,5),
             };
 
             var appointmentDetail1 = new AppointmentDetail
@@ -35,7 +35,7 @@ namespace AppointmentManager.Data
             var appointment2 = new Appointment
             {
                 AppointmentName = "Lunch With Joe",
-                AppointmentTime = new DateTime(2014, 02, 16),
+                AppointmentTime = new DateTime(2014, 02, 16,13,7,8),
             };
 
             var appointmentDetail2 = new AppointmentDetail
@@ -51,7 +51,7 @@ namespace AppointmentManager.Data
             var appointment3 = new Appointment
             {
                 AppointmentName = "Project Meeting",
-                AppointmentTime = new DateTime(2014, 02, 19),
+                AppointmentTime = new DateTime(2014, 02, 19,5,6,5),
             };
 
             var appointmentDetail3 = new AppointmentDetail
@@ -68,7 +68,7 @@ namespace AppointmentManager.Data
             var appointment4 = new Appointment
             {
                 AppointmentName = "Scrum Meeting",
-                AppointmentTime = new DateTime(2014, 05, 19),
+                AppointmentTime = new DateTime(2014, 05, 19,1,2,3),
             };
 
             var appointmentDetail4 = new AppointmentDetail
@@ -85,7 +85,7 @@ namespace AppointmentManager.Data
             var appointment5 = new Appointment
             {
                 AppointmentName = "Scrum Meeting",
-                AppointmentTime = new DateTime(2014, 08, 19),
+                AppointmentTime = new DateTime(2014, 08, 19,11,34,56),
             };
 
             var appointmentDetail5 = new AppointmentDetail
@@ -101,7 +101,7 @@ namespace AppointmentManager.Data
             var appointment6 = new Appointment
             {
                 AppointmentName = "Retrospective Meeting",
-                AppointmentTime = new DateTime(2014, 08, 19),
+                AppointmentTime = new DateTime(2014, 08, 19,17,56,34),
             };
 
             var appointmentDetail6 = new AppointmentDetail
