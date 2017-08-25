@@ -7,13 +7,14 @@ namespace AppointmentCalendar.Models
 {
     public class Appoinment
     {
+        public Guid Id { get; set; }
         public string AppointmentName { get; set; }
         public DateTime AppointmentTime { get; set; }
-        public Lazy<AppointmentDetail> Detail { get; set; }
     }
 
     public class AppointmentDetail
     {
+        public Guid AppointmentId { get; set; }
         public string Organiser { get; set; }
         public List<string> Attendees { get; set; }
     }

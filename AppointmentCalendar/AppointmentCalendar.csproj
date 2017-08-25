@@ -186,6 +186,7 @@
     <Content Include="Views\Appointments\Index.cshtml" />
     <Content Include="Views\Appointments\Calendar.cshtml" />
     <Content Include="Views\Appointments\Appointments.cshtml" />
+    <Content Include="Views\Appointments\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

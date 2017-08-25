@@ -12,6 +12,7 @@ namespace AppointmentManager
     {
         IEnumerable<Appointment> GetAllAppointments();
         IEnumerable<Appointment> GetAppointments(int selector);
+        AppointmentDetail GetAppointmentDetails(Guid appointmentId);
         Type GetProviderType();
     }
 }

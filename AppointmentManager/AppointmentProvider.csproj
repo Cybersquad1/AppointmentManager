@@ -44,9 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppointmentDetailsProvider.cs" />
     <Compile Include="AppointmentProviderContext.cs" />
-    <Compile Include="IAppointmentDetailsProvider.cs" />
     <Compile Include="IAppointmentProviderContext.cs" />
     <Compile Include="Models\Appointment.cs" />
     <Compile Include="Data\AppointmentDataContext.cs" />

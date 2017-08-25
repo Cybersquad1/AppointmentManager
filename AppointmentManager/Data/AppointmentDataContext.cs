@@ -41,8 +41,8 @@ namespace AppointmentManager.Data
             var appointmentDetail2 = new AppointmentDetail
             {
                 AppointmentId = appointment2.Id,
-                Organiser = "Max Mustermann",
-                Attendees = new List<string> { "John Smith", "Robert Turner", "Erika Gobler" }
+                Organiser = "Tim Lee",
+                Attendees = new List<string> { "Blaise Pascal", "Enrico Fermi", "Jane Goodall" }
             };
 
             Appointments.Add(appointment2);
@@ -57,8 +57,8 @@ namespace AppointmentManager.Data
             var appointmentDetail3 = new AppointmentDetail
             {
                 AppointmentId = appointment3.Id,
-                Organiser = "Max Mustermann",
-                Attendees = new List<string> { "John Smith", "Robert Turner", "Erika Gobler" }
+                Organiser = "Max Planck",
+                Attendees = new List<string> { "Sarah Boysen", "Stephen Hawking", "Niels Bohr" }
             };
 
             Appointments.Add(appointment3);

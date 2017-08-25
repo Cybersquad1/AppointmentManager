@@ -9,7 +9,7 @@
         <div class="list-group" id="appointmentList">
             @foreach (var appointment in Model)
             {
-                <a href="#" class="list-group-item">@appointment.AppointmentTime <span class="pull-right">@appointment.AppointmentName</span></a>
+                <a href="#" data-target-url="@Url.Action("GetAppointmentDetail", "Appointments", new {Id = appointment.Id})" class="list-group-item">@appointment.AppointmentTime <span class="pull-right">@appointment.AppointmentName</span></a>
             }
 
         </div>
@@ -28,7 +28,12 @@
         $('.list-group-item').on("click", function () {
             $(this).addClass('active');
             $(this).siblings().removeClass('active');
+            $.get($(this).data('targetUrl'), function (data) {
+                $('#Details').html(data);
+            });
         });
+
+        $("div a:first-child").click();
 
 
     });

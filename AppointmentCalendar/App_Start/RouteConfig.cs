@@ -16,7 +16,7 @@ namespace AppointmentCalendar
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Appointments", action = "Calendar", id = UrlParameter.Optional }
+                defaults: new { controller = "Appointments", action = "Index", id = UrlParameter.Optional }
             );
         }
     }

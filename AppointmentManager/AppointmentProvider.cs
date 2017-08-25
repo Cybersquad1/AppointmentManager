@@ -26,6 +26,11 @@ namespace AppointmentManager
             return Context.Appointments.Where(p => p.AppointmentTime.Year == selector);
         }
 
+        public virtual AppointmentDetail GetAppointmentDetails(Guid appointmentId)
+        {
+            return Context.AppointmentDetails.SingleOrDefault(p => p.AppointmentId == appointmentId);
+        }
+
         public virtual Type GetProviderType()
         {
             return GetType();

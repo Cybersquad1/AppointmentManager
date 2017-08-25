@@ -1,0 +1,35 @@
+﻿@model AppointmentCalendar.Models.AppointmentDetail
+
+<div>
+    <h4>Details</h4>
+
+    <dl class="dl-horizontal pull-left">
+        <dt>
+            @Html.DisplayNameFor(model => model.Organiser)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Organiser)
+        </dd>
+
+        <br/>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Attendees)
+        </dt>
+
+        <dd>
+            @{
+                <ul>
+                    @foreach (var attendee in Model.Attendees)
+                    {
+                        <li>@attendee</li>
+                    }
+                </ul>
+
+            }
+        </dd>
+
+    </dl>
+</div>
+

@@ -45,12 +45,28 @@ namespace AppointmentCalendar.Controllers
             {
                 appointments.Add(new Appoinment
                 {
+                    Id = appointment.Id,
                     AppointmentName = appointment.AppointmentName,
-                    AppointmentTime = appointment.AppointmentTime
+                    AppointmentTime = appointment.AppointmentTime,
                 });
             }
                 
             return PartialView("Appointments", appointments);
+        }
+
+
+
+        public PartialViewResult GetAppointmentDetail(Guid id)
+        {
+            var provider = _appointmentProviderStrategy.GetAppointmentProvider();
+            var appointment = provider.GetAppointmentDetails(id);
+            AppointmentDetail detail = new AppointmentDetail
+            {
+                Organiser = appointment.Organiser,
+                Attendees = appointment.Attendees
+            };
+            return PartialView("Details",detail);
+
         }
     }
 }
