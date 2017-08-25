@@ -10,13 +10,13 @@ namespace AppointmentCalendar.Controllers
 {
     public class AppointmentsController : Controller
     {
-        private readonly IAppointmentProviderContext _appointmentProviderStrategy;
-        private readonly IAppointmentProvider _provider;
+        private readonly IAppointmentRepositoryContext _appointmentProviderStrategy;
+        private readonly IAppointmentRepository _provider;
 
-        public AppointmentsController(IAppointmentProviderContext appointmentProviderStrategy)
+        public AppointmentsController(IAppointmentRepositoryContext appointmentProviderStrategy)
         {
             _appointmentProviderStrategy = appointmentProviderStrategy;
-            _provider = _appointmentProviderStrategy.GetAppointmentProvider();
+            _provider = _appointmentProviderStrategy.GetAppointmentRepository();
         }
 
         public ActionResult Index()
@@ -46,7 +46,7 @@ namespace AppointmentCalendar.Controllers
         /// <returns></returns>
         public PartialViewResult GetAppointmentsForMonth(int month)
         {
-            var monthlyProvider = _appointmentProviderStrategy.GetAppointmentProvider(AppointmentSelector.Monthly);
+            var monthlyProvider = _appointmentProviderStrategy.GetAppointmentRepository(AppointmentSelector.Monthly);
             var response = monthlyProvider.GetAppointments(month).ToList();
             var appointments = response.Select(
                 appointment => new Appoinment

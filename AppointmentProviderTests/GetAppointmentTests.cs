@@ -13,7 +13,7 @@ namespace AppointmentProviderTests
     public class GetAppointmentTests
     {
         private static IAppointmentDataContext _testContext;
-        private static IAppointmentProviderContext _appointmentProviderStrategy;
+        private static IAppointmentRepositoryContext _appointmentProviderStrategy;
 
 
         [TestInitialize]
@@ -22,7 +22,7 @@ namespace AppointmentProviderTests
             _testContext = MockRepository.GenerateStub<IAppointmentDataContext>();
             _testContext.Appointments = new List<Appointment>();
             _testContext.AppointmentDetails = new List<AppointmentDetail>();
-            _appointmentProviderStrategy = new AppointmentProviderContext(_testContext);
+            _appointmentProviderStrategy = new AppointmentRepositoryContext(_testContext);
             
         }
 
@@ -32,14 +32,14 @@ namespace AppointmentProviderTests
         [TestMethod]
         public void NoAppointmentReturnsEmpty()
         {
-            var provider = _appointmentProviderStrategy.GetAppointmentProvider();
+            var provider = _appointmentProviderStrategy.GetAppointmentRepository();
             Assert.IsTrue(!provider.GetAllAppointments().Any());
         }
 
         [TestMethod]
         public void OneAppointmentCreatedReturnsOne()
         {
-            var provider = _appointmentProviderStrategy.GetAppointmentProvider();
+            var provider = _appointmentProviderStrategy.GetAppointmentRepository();
             _testContext.Appointments.Add(new Appointment());
             Assert.IsTrue(provider.GetAllAppointments().Count() == 1);
         }
@@ -48,7 +48,7 @@ namespace AppointmentProviderTests
         [TestMethod]
         public void OneAppointmentCreatedAndRemovedReturnsEmpty()
         {
-            var provider = _appointmentProviderStrategy.GetAppointmentProvider();
+            var provider = _appointmentProviderStrategy.GetAppointmentRepository();
             _testContext.Appointments.Add(new Appointment());
             Assert.IsTrue(provider.GetAllAppointments().Count() == 1);
             _testContext.Appointments.Clear();
@@ -66,12 +66,12 @@ namespace AppointmentProviderTests
         [TestMethod]
         public void AddAppointmentFilterByMonth()
         {
-            var provider = _appointmentProviderStrategy.GetAppointmentProvider(AppointmentSelector.Monthly);
+            var provider = _appointmentProviderStrategy.GetAppointmentRepository(AppointmentSelector.Monthly);
             var appointmentDate1 = DateTime.Now.AddMonths(3);
             var appointmentDate2 = DateTime.Now.AddMonths(2);
             var appointmentName1 = "test1";
             var appointmentName2 = "test2";
-            _testContext.Appointments.Add(new Appointment { AppointmentName = appointmentName1, AppointmentTime = appointmentDate1 });
+            _testContext.Appointments.Add(new Appointment { AppointmentName = appointmentName1, AppointmentTime = appointmentDate1});
             _testContext.Appointments.Add(new Appointment { AppointmentName = appointmentName2, AppointmentTime = appointmentDate2 });
             var appointments = provider.GetAppointments(appointmentDate1.Month).ToList();
             Assert.IsTrue(appointments.Count == 1);
@@ -81,7 +81,7 @@ namespace AppointmentProviderTests
         [TestMethod]
         public void AddAppointmentsFilterByMonth()
         {
-            var provider = _appointmentProviderStrategy.GetAppointmentProvider(AppointmentSelector.Monthly);
+            var provider = _appointmentProviderStrategy.GetAppointmentRepository(AppointmentSelector.Monthly);
             var appointmentDate1 = DateTime.Now.AddMonths(3);
             var appointmentDate2 = DateTime.Now.AddMonths(3);
             var appointmentDate3 = DateTime.Now.AddMonths(2);

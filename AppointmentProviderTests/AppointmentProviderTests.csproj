@@ -54,10 +54,13 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="AddAppointmentTests.cs" />
+    <Compile Include="DeleteAppointmentTests.cs" />
     <Compile Include="GetAppointmentDetailsTests.cs" />
-    <Compile Include="GetAppointmentProviderContextTests.cs" />
+    <Compile Include="GetAppointmentRepostiryContextTests.cs" />
     <Compile Include="GetAppointmentTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UpdateAppointmentTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AppointmentManager\AppointmentProvider.csproj">

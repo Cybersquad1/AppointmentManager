@@ -15,7 +15,7 @@ namespace AppointmentProviderTests
     public class GetAppointmentDetailsTests
     {
         private static IAppointmentDataContext _testContext;
-        private static IAppointmentProviderContext _appointmentProviderStrategy;
+        private static IAppointmentRepositoryContext _appointmentProviderStrategy;
 
         [TestInitialize]
         public void Initialize()
@@ -23,14 +23,14 @@ namespace AppointmentProviderTests
             _testContext = MockRepository.GenerateStub<IAppointmentDataContext>();
             _testContext.Appointments = new List<Appointment>();
             _testContext.AppointmentDetails = new List<AppointmentDetail>();
-            _appointmentProviderStrategy = new AppointmentProviderContext(_testContext);
+            _appointmentProviderStrategy = new AppointmentRepositoryContext(_testContext);
         }
 
         [TestMethod]
         public void GetAppointmentDetailsForNonExistantAppointmentReturnsNull()
         {
-            Guid id = Guid.NewGuid();
-            var provider = _appointmentProviderStrategy.GetAppointmentProvider();
+            var id = Guid.NewGuid();
+            var provider = _appointmentProviderStrategy.GetAppointmentRepository();
             var appointmentDetail = provider.GetAppointmentDetails(id);
             Assert.IsTrue(appointmentDetail==null);
         }
@@ -46,17 +46,16 @@ namespace AppointmentProviderTests
             };
             var appointmentDetail = new AppointmentDetail
             {
-                AppointmentId = appointmentWithDetail.Id,
+                Appointment = appointmentWithDetail,
                 Organiser = "organiser",
                 Attendees = new List<string> { "attendee1","attendee2"}
             };
 
-            var provider = _appointmentProviderStrategy.GetAppointmentProvider();
+            var provider = _appointmentProviderStrategy.GetAppointmentRepository();
             _testContext.Appointments.Add(appointmentWithDetail);
             _testContext.AppointmentDetails.Add(appointmentDetail);
-            var detail = provider.GetAppointmentDetails(appointmentDetail.AppointmentId);
+            var detail = provider.GetAppointmentDetails(appointmentDetail.Appointment.Id);
             Assert.AreEqual(detail,appointmentDetail);
-
         }
 
 
@@ -71,24 +70,23 @@ namespace AppointmentProviderTests
             };
             var appointmentDetail = new AppointmentDetail
             {
-                AppointmentId = appointmentWithDetail.Id,
+                Appointment = appointmentWithDetail,
                 Organiser = "organiser",
                 Attendees = new List<string> { "attendee1", "attendee2" }
             };
 
             var appointmentDetail2 = new AppointmentDetail
             {
-                AppointmentId = appointmentWithDetail.Id,
+                Appointment = appointmentWithDetail,
                 Organiser = "organiser2",
                 Attendees = new List<string> {"attendee3", "attendee4"}
             };
 
-            var provider = _appointmentProviderStrategy.GetAppointmentProvider();
+            var provider = _appointmentProviderStrategy.GetAppointmentRepository();
             _testContext.Appointments.Add(appointmentWithDetail);
             _testContext.AppointmentDetails.Add(appointmentDetail);
             _testContext.AppointmentDetails.Add(appointmentDetail2);
-            provider.GetAppointmentDetails(appointmentDetail.AppointmentId);
-
+            provider.GetAppointmentDetails(appointmentDetail.Appointment.Id);
         }
 
 

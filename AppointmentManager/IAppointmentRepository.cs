@@ -8,11 +8,15 @@ using AppointmentManager.Models;
 
 namespace AppointmentManager
 {
-    public interface IAppointmentProvider
+    public interface IAppointmentRepository
     {
         IEnumerable<Appointment> GetAllAppointments();
         IEnumerable<Appointment> GetAppointments(int selector);
+        Appointment GetAppointmentById(Guid id);
         AppointmentDetail GetAppointmentDetails(Guid appointmentId);
+        void AddAppointment(AppointmentDetail appointment);
+        bool DeleteAppointment(Appointment appointment);
+        bool UpdateApointment(Appointment updatedAppointment);
         Type GetProviderType();
     }
 }

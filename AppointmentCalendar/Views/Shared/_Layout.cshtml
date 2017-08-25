@@ -19,7 +19,7 @@
                 @Html.ActionLink("Appointment Calendar", "Index", "Appointments", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav base-toggle">
                     <li>@Html.ActionLink("Home", "Index", "Appointments")</li>
                     <li>@Html.ActionLink("About", "About", "Appointments")</li>
                     <li>@Html.ActionLink("Calendar", "Calendar", "Appointments")</li>
@@ -35,6 +35,14 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $('.nav.navbar-nav.base-toggle > li').on('click', function () {
+                        $(this).addClass('active');
+                        $(this).siblings().removeClass('active');
+                    });
+        });
+    </script>
     @RenderSection("scripts", required: false)
 </body>
 </html>

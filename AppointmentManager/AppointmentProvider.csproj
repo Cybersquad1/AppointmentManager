@@ -44,14 +44,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppointmentProviderContext.cs" />
-    <Compile Include="IAppointmentProviderContext.cs" />
+    <Compile Include="AppointmentRepositoryContext.cs" />
+    <Compile Include="IAppointmentRepositoryContext.cs" />
     <Compile Include="Models\Appointment.cs" />
     <Compile Include="Data\AppointmentDataContext.cs" />
     <Compile Include="Models\AppointmentDetail.cs" />
-    <Compile Include="AppointmentProvider.cs" />
+    <Compile Include="AppointmentRepository.cs" />
     <Compile Include="Data\IAppointmentDataContext.cs" />
-    <Compile Include="IAppointmentProvider.cs" />
+    <Compile Include="IAppointmentRepository.cs" />
     <Compile Include="AppointmentSelector.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -9,10 +9,10 @@ namespace AppointmentManager.Models
         {
             Id = Guid.NewGuid();
         }
-
-        public Guid Id { get; set; }
+        public Guid Id { get; private set; }
         public string AppointmentName { get; set; }
         public DateTime AppointmentTime { get; set; }
+        
 
     }
 }

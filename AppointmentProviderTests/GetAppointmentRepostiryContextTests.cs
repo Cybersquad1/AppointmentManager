@@ -11,31 +11,31 @@ using Rhino.Mocks;
 namespace AppointmentProviderTests
 {
     [TestClass]
-    public class GetAppointmentProviderContextTests
+    public class GetAppointmentRepostiryContextTests
     {
-        private IAppointmentProviderContext ProviderContext { get; set; }
+        private IAppointmentRepositoryContext ProviderContext { get; set; }
         private IAppointmentDataContext _testContext { get; set; }
 
         [TestInitialize]
         public void Initialize()
         {
             _testContext = MockRepository.GenerateStub<IAppointmentDataContext>();
-            ProviderContext = new AppointmentProviderContext(_testContext);
+            ProviderContext = new AppointmentRepositoryContext(_testContext);
         }
 
 
         [TestMethod]
         public void ResolutionOfDefaultProvider()
         {
-            var provider = ProviderContext.GetAppointmentProvider();
-            Assert.IsTrue(provider.GetProviderType() == typeof(AppointmentProvider));
+            var provider = ProviderContext.GetAppointmentRepository();
+            Assert.IsTrue(provider.GetProviderType() == typeof(AppointmentRepository));
         }
 
         [TestMethod]
         public void ResolutionOfMonthlyProvider()
         {
-            var provider = ProviderContext.GetAppointmentProvider(AppointmentSelector.Monthly);
-            Assert.IsTrue(provider.GetProviderType() == typeof(MonthlyAppointmentProvider));
+            var provider = ProviderContext.GetAppointmentRepository(AppointmentSelector.Monthly);
+            Assert.IsTrue(provider.GetProviderType() == typeof(MonthlyAppointmentRepository));
         }
     }
 }

@@ -4,27 +4,27 @@ using Microsoft.Practices.Unity;
 
 namespace AppointmentManager
 {
-    public class AppointmentProviderContext : IAppointmentProviderContext
+    public class AppointmentRepositoryContext : IAppointmentRepositoryContext
     {
         private IAppointmentDataContext Context { get; set; }
 
         [InjectionConstructor]
-        public  AppointmentProviderContext(IAppointmentDataContext context)
+        public  AppointmentRepositoryContext(IAppointmentDataContext context)
         {
             Context = context;
         }
 
-        public IAppointmentProvider GetAppointmentProvider(AppointmentSelector selector = default(AppointmentSelector))
+        public IAppointmentRepository GetAppointmentRepository(AppointmentSelector selector = default(AppointmentSelector))
         {
             switch (selector)
             {
                 case AppointmentSelector.Monthly:
                 {
-                    return new MonthlyAppointmentProvider(Context);
+                    return new MonthlyAppointmentRepository(Context);
                 }
                 default:
                 {
-                    return new AppointmentProvider(Context);
+                    return new AppointmentRepository(Context);
                 }
             }
         }

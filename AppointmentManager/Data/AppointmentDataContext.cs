@@ -23,7 +23,7 @@ namespace AppointmentManager.Data
 
             var appointmentDetail1 = new AppointmentDetail
             {
-                AppointmentId = appointment1.Id,
+                Appointment = appointment1,
                 Organiser = "Max Mustermann",
                 Attendees = new List<string> {"John Smith" , "Robert Turner", "Erika Gobler"}
             };
@@ -40,7 +40,7 @@ namespace AppointmentManager.Data
 
             var appointmentDetail2 = new AppointmentDetail
             {
-                AppointmentId = appointment2.Id,
+                Appointment = appointment2,
                 Organiser = "Tim Lee",
                 Attendees = new List<string> { "Blaise Pascal", "Enrico Fermi", "Jane Goodall" }
             };
@@ -56,7 +56,7 @@ namespace AppointmentManager.Data
 
             var appointmentDetail3 = new AppointmentDetail
             {
-                AppointmentId = appointment3.Id,
+                Appointment = appointment3,
                 Organiser = "Max Planck",
                 Attendees = new List<string> { "Sarah Boysen", "Stephen Hawking", "Niels Bohr" }
             };
@@ -73,7 +73,7 @@ namespace AppointmentManager.Data
 
             var appointmentDetail4 = new AppointmentDetail
             {
-                AppointmentId = appointment4.Id,
+                Appointment = appointment4,
                 Organiser = "Tim Cook",
                 Attendees = new List<string> { "Jane Goodall", "Stephen Hawking", "Lord Kelvin" }
             };
@@ -90,7 +90,7 @@ namespace AppointmentManager.Data
 
             var appointmentDetail5 = new AppointmentDetail
             {
-                AppointmentId = appointment5.Id,
+                Appointment = appointment5,
                 Organiser = "Jim Cook",
                 Attendees = new List<string> { "Jane Goodall", "Stephen Hawking", "Lord Kelvin" }
             };
@@ -106,7 +106,7 @@ namespace AppointmentManager.Data
 
             var appointmentDetail6 = new AppointmentDetail
             {
-                AppointmentId = appointment6.Id,
+                Appointment = appointment6,
                 Organiser = "Tim Lee",
                 Attendees = new List<string> { "Jane Goodall", "Stephen Hawking", "Lord Kelvin" }
             };

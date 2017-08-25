@@ -23,7 +23,7 @@ namespace AppointmentCalendar
         {
             var container = new UnityContainer();
             container.RegisterType<IAppointmentDataContext, AppointmentDataContext>();
-            container.RegisterType<IAppointmentProviderContext, AppointmentProviderContext>(
+            container.RegisterType<IAppointmentRepositoryContext, AppointmentRepositoryContext>(
                 new ContainerControlledLifetimeManager(),
                 new InjectionConstructor(
                     new ResolvedParameter<IAppointmentDataContext>())
